@@ -1,0 +1,49 @@
+{
+  "id": "mh-udcpr-0.1",
+  "jurisdiction": "mh-udcpr",
+  "version": "0.1",
+  "status": "draft",
+  "notes": "Skeleton ruleset. EVERY value below is a placeholder pending verification against the UDCPR text by a licensed architect/liaison. Do not show to clients.",
+  "params": [
+    {
+      "id": "base_fsi_residential",
+      "description": "Base FSI for residential zone (varies by congested/non-congested area and road width)",
+      "value": 1.1,
+      "unit": "ratio",
+      "status": "requires_professional_verification",
+      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+    },
+    {
+      "id": "premium_fsi_by_road_width",
+      "description": "Additional premium FSI permissible, keyed by minimum road width in metres",
+      "value": { "9": 0.3, "12": 0.5, "15": 0.7, "24": 0.9 },
+      "unit": "ratio by road width (m)",
+      "status": "requires_professional_verification",
+      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+    },
+    {
+      "id": "tdr_max_by_road_width",
+      "description": "Maximum TDR (Transferable Development Rights) loading, keyed by road width in metres",
+      "value": { "9": 0.4, "12": 0.65, "15": 0.9, "24": 1.15 },
+      "unit": "ratio by road width (m)",
+      "status": "requires_professional_verification",
+      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+    },
+    {
+      "id": "ancillary_fsi_pct",
+      "description": "Ancillary area FSI permissible as a fraction of permissible FSI (on payment of premium)",
+      "value": 0.6,
+      "unit": "fraction",
+      "status": "requires_professional_verification",
+      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+    },
+    {
+      "id": "saleable_efficiency",
+      "description": "Working assumption: saleable (RERA carpet to saleable) efficiency applied to built-up area",
+      "value": 0.75,
+      "unit": "fraction",
+      "status": "assumed",
+      "source": "Internal working assumption, user-overridable"
+    }
+  ]
+}
