@@ -3,45 +3,52 @@
   "jurisdiction": "mh-udcpr",
   "version": "0.1",
   "status": "draft",
-  "notes": "Skeleton ruleset. EVERY value below is a placeholder pending verification against the UDCPR text by a licensed architect/liaison. Do not show to clients.",
+  "notes": "Draft ruleset for residential use in NON-CONGESTED municipal-corporation areas of Maharashtra under UDCPR 2020. EVERY regulatory value below is pending verification against the UDCPR text (Table 6-G and related regulations) by a licensed architect/liaison. Do not show to clients.",
   "params": [
     {
-      "id": "base_fsi_residential",
-      "description": "Base FSI for residential zone (varies by congested/non-congested area and road width)",
-      "value": 1.1,
-      "unit": "ratio",
+      "id": "fsi_table_residential_noncongested",
+      "description": "FSI entitlement by front road width (m): basic FSI (by right), premium FSI (on payment), TDR loading (purchased rights). maxRoadWidthM: null = no upper bound.",
+      "value": [
+        { "maxRoadWidthM": 9, "basicFsi": 1.1, "premiumFsi": 0.3, "tdrFsi": 0.4 },
+        { "maxRoadWidthM": 12, "basicFsi": 1.1, "premiumFsi": 0.3, "tdrFsi": 0.7 },
+        { "maxRoadWidthM": 15, "basicFsi": 1.1, "premiumFsi": 0.3, "tdrFsi": 1.1 },
+        { "maxRoadWidthM": 24, "basicFsi": 1.1, "premiumFsi": 0.4, "tdrFsi": 1.25 },
+        { "maxRoadWidthM": 30, "basicFsi": 1.1, "premiumFsi": 0.45, "tdrFsi": 1.35 },
+        { "maxRoadWidthM": null, "basicFsi": 1.1, "premiumFsi": 0.5, "tdrFsi": 1.4 }
+      ],
+      "unit": "FSI ratios by road-width band",
       "status": "requires_professional_verification",
-      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+      "source": "UDCPR 2020, Table 6-G (residential, non-congested) — TO BE VERIFIED"
     },
     {
-      "id": "premium_fsi_by_road_width",
-      "description": "Additional premium FSI permissible, keyed by minimum road width in metres",
-      "value": { "9": 0.3, "12": 0.5, "15": 0.7, "24": 0.9 },
-      "unit": "ratio by road width (m)",
+      "id": "large_plot_basic_fsi",
+      "description": "Basic FSI for residential plots of 1000 sq m and above (including amalgamated plots), irrespective of road width",
+      "value": { "minPlotAreaSqm": 1000, "basicFsi": 1.25 },
+      "unit": "FSI ratio",
       "status": "requires_professional_verification",
-      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+      "source": "UDCPR 2020 large-plot provision — TO BE VERIFIED"
     },
     {
-      "id": "tdr_max_by_road_width",
-      "description": "Maximum TDR (Transferable Development Rights) loading, keyed by road width in metres",
-      "value": { "9": 0.4, "12": 0.65, "15": 0.9, "24": 1.15 },
-      "unit": "ratio by road width (m)",
-      "status": "requires_professional_verification",
-      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
-    },
-    {
-      "id": "ancillary_fsi_pct",
-      "description": "Ancillary area FSI permissible as a fraction of permissible FSI (on payment of premium)",
+      "id": "ancillary_fsi_residential_pct",
+      "description": "Ancillary area FSI available on payment of premium, as a fraction of the FSI in the development permission (residential). NOT included in v0.1 scenario totals; recorded for the report's notes.",
       "value": 0.6,
       "unit": "fraction",
       "status": "requires_professional_verification",
-      "source": "UDCPR 2020 — regulation reference TO BE VERIFIED"
+      "source": "UDCPR 2020 ancillary-FSI provision — TO BE VERIFIED"
     },
     {
       "id": "saleable_efficiency",
-      "description": "Working assumption: saleable (RERA carpet to saleable) efficiency applied to built-up area",
+      "description": "Working assumption: saleable area as a fraction of built-up area (loading/efficiency), user-overridable",
       "value": 0.75,
       "unit": "fraction",
+      "status": "assumed",
+      "source": "Internal working assumption"
+    },
+    {
+      "id": "rehab_bua_factor",
+      "description": "Working assumption for redevelopment: rehab built-up area as a multiple of existing built-up area (free-sale homes for existing members, incl. the customary area increase)",
+      "value": 1.2,
+      "unit": "multiple of existing BUA",
       "status": "assumed",
       "source": "Internal working assumption, user-overridable"
     }
